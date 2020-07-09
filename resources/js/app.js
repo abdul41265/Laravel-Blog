@@ -11,8 +11,10 @@ import VueRouter from "vue-router";
 import Index from "./index";
 import Vuex from 'vuex';
 import storeDefinition from "./store";
+import ValidationErrors from "./components/ValidationErrors";
 
 window.Vue = require('vue');
+Vue.component("v-errors", ValidationErrors);
 
 Vue.use(Vuex);
 

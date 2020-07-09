@@ -10,7 +10,9 @@
             placeholder="Enter your name"
             class="form-control"
             v-model="user.name"
+            :class="[{'is-invalid': errorFor('name')}]"
           />
+          <v-errors :errors="errorFor('name')"></v-errors>
         </div>
 
         <div class="form-group">
@@ -21,7 +23,9 @@
             placeholder="Enter your e-mail"
             class="form-control"
             v-model="user.email"
+            :class="[{'is-invalid': errorFor('email')}]"
           />
+          <v-errors :errors="errorFor('email')"></v-errors>
         </div>
 
         <div class="form-group">
@@ -32,8 +36,9 @@
             placeholder="Enter your password"
             class="form-control"
             v-model="user.password"
-        
+            :class="[{'is-invalid': errorFor('password')}]"
           />
+          <v-errors :errors="errorFor('password')"></v-errors>
         </div>
 
         <div class="form-group">
@@ -44,9 +49,9 @@
             placeholder="Confirm your password"
             class="form-control"
             v-model="user.password_confirmation"
-           
+           :class="[{'is-invalid': errorFor('password_confirmation')}]"
           />
-         
+          <v-errors :errors="errorFor('password_confirmation')"></v-errors>
         </div>
 
         <button
@@ -69,10 +74,13 @@
 
 <script>
 import { logIn } from "./../auth";
+import validationErrors from "../mixins/validationErrors";
 
 export default {
  
+ mixins: [validationErrors],
   data() {
+    
     return {
       user: {
         name: null,
