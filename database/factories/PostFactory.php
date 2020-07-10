@@ -15,6 +15,9 @@ $suffix=[
 $factory->define(Post::class, function (Faker $faker) use ($suffix) {
     return [
         'title'=> $faker->city . '' .Arr::random($suffix),
-        'content'=> $faker-> text()
+        'content'=> $faker-> text(),
+
+        'user_id' => random_int(1, 5),
+
     ];
 });

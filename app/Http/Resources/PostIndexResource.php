@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Resources;
+use App\User;
+use App\Like;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,11 +16,16 @@ class PostIndexResource extends JsonResource
      */
     public function toArray($request)
     {
+        $posts = User::find($this->user_id);
+        $likes= Like::where('post_id',$this->id)->count();
         return [
 
+
+            'name'=> $posts->name,
             'id'=> $this->id,
             'title'=> $this->title,
-            'content'=>$this->content
+            'content'=>$this->content,
+            'likes'=>$likes
         ];
     }
 }

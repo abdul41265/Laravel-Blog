@@ -13,8 +13,13 @@
           <router-link :to="{name: 'login'}" class="nav-link">Sign-in</router-link>
         </li>
 
+        
+        <li class="nav-item" v-if="isLoggedIn">
+          <router-link :to="{name: 'create'}" class="nav-link">Create Post</router-link>
+        </li>
         <li class="nav-item" v-if="isLoggedIn">
           <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
+
         </li>
       </ul>
     </nav>
@@ -27,6 +32,7 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
+import { isLoggedIn } from '../../../laravel-vue-spa-course/resources/js/shared/utils/auth';
 
 export default {
 //   data() {

@@ -32,6 +32,16 @@ const routes = [
         path: "/auth/register",
         component: require("./auth/Register").default,
         name: "register"
+    },
+    {
+        path: "/admin/create",
+        component: require("./components/PostCreate").default,
+        name: "create"
+    },
+    {
+        path: "/post/:id/edit",
+        component: require("./components/PostEdit").default,
+        name: "edit"
     }
 ];
 

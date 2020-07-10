@@ -29,3 +29,18 @@ use App\Post;
 // Route:: get('posts/{id}','Api\PostController@show');
 
 Route::apiResource('posts', 'Api\PostController')->only(['index', 'show']);
+
+Route::post('admin/create', [
+    'uses' => 'Api\PostController@postAdminCreate',
+    'as' => 'admin.create'
+]);
+
+Route::get('post/{id}/like', [
+    'uses' => 'Api\PostController@getLikePost',
+    'as' => 'blog.post.like'
+]);
+
+Route::post('admin/edit', [
+    'uses' => 'Api\PostController@postAdminUpdate',
+    'as' => 'admin.update'
+]);
